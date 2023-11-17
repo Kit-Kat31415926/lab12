@@ -138,7 +138,7 @@ public class FamilyTree
 			throw new TreeException("Invalid Line Format: ");
 		
 		String parent = line.substring(0, colonIndex);
-		String childrenString = line.substring(colonIndex + 1);
+		String childrenString = line.substring(colonIndex + 1, line.length());
 		String[] childrenArray = childrenString.split(",");
 				
 		// Find parent node. If root is null then the tree is empty and the
@@ -150,6 +150,7 @@ public class FamilyTree
 		else
 		{
 			parentNode = root.getNodeWithName(parent);
+			if(parentNode == null)
 				throw new TreeException("Parent node not found.");
 		}
 		
